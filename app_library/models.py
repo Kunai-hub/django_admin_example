@@ -32,7 +32,13 @@ class Author(models.Model):
 
 
 class Book(models.Model):
+    STATUS_CHOICES = [
+        ('d', 'Draft'),
+        ('r', 'Review'),
+        ('p', 'Published')
+    ]
     title = models.CharField(max_length=100)
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     publication_date = models.DateField()
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='d')
