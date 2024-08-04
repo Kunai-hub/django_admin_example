@@ -9,6 +9,12 @@
         <h3>
             Добро пожаловать на сайт, {{ request.user.first_name }}
         </h3>
+        <p>
+            Дата рождения: {{ request.user.birth_date }}
+        </p>
+        <p>
+            Город: {{ request.user.city }}
+        </p>
     {% else %}
         <h3>
             Вы не авторизованны на нашем сайте.

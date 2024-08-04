@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from app_users.forms import AuthForm, ExtendedRegisterForm
 from django.contrib.auth.views import LoginView, LogoutView
 
+from app_users.models import Profile
+
 
 def login_view(request):
 
@@ -75,7 +77,14 @@ def register_view_extend(request):
         form = ExtendedRegisterForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            user = form.save()
+            birth_date = form.cleaned_data.get('birth_date')
+            city = form.cleaned_data.get('city')
+            Profile.objects.create(
+                user=user,
+                birth_date=birth_date,
+                city=city
+            )
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
