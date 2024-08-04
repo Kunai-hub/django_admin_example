@@ -7,7 +7,7 @@
 <body>
     {% if request.user.is_authenticated %}
         <h3>
-            Добро пожаловать на сайт, {{ request.user.username }}
+            Добро пожаловать на сайт, {{ request.user.first_name }}
         </h3>
     {% else %}
         <h3>

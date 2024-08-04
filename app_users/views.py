@@ -1,7 +1,8 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
-from django.shortcuts import render
-from app_users.forms import AuthForm
+from django.shortcuts import render, redirect
+from app_users.forms import AuthForm, ExtendedRegisterForm
 from django.contrib.auth.views import LoginView, LogoutView
 
 
@@ -47,3 +48,41 @@ def logout_view(request):
 
 class AnotherLogoutView(LogoutView):
     template_name = 'users/logout.html'
+
+
+def register_view(request):
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = UserCreationForm()
+    return render(request,
+                  'users/register.html',
+                  {'form': form})
+
+
+def register_view_extend(request):
+
+    if request.method == 'POST':
+        form = ExtendedRegisterForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = ExtendedRegisterForm()
+    return render(request,
+                  'users/register.html',
+                  {'form': form})
