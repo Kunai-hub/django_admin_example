@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import render
 from app_users.forms import AuthForm
+from django.contrib.auth.views import LoginView
 
 
 def login_view(request):
@@ -32,3 +33,7 @@ def login_view(request):
                   'users/login.html',
                   context=context
                   )
+
+
+class AnotherLoginView(LoginView):
+    template_name = 'users/login.html'
