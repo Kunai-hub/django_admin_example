@@ -24,5 +24,6 @@ urlpatterns = [
     path('', MainPageView.as_view(), name='main_page'),
     path('admin/', admin.site.urls),
     path('users/', include('app_users.urls')),
-    path('employment/', include('app_employment.urls'))
+    path('employment/', include('app_employment.urls')),
+    path('files/', include('app_media.urls'))
 ]
