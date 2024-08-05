@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вакансии</title>
+</head>
+<body>
+    <h1>
+        Вакансии
+    </h1>
+    {% if vacancy_list %}
+    	<ul>
+            {% for vacancy in vacancy_list %}
+            	<li>
+                    <a href="#">{{ vacancy.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>
+            Вакансий нет.
+        </p>
+    {% endif %} 
+</body>
+</html>

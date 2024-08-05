@@ -23,5 +23,6 @@ from django_admin_example.views import MainPageView
 urlpatterns = [
     path('', MainPageView.as_view(), name='main_page'),
     path('admin/', admin.site.urls),
-    path('users/', include('app_users.urls'))
+    path('users/', include('app_users.urls')),
+    path('employment/', include('app_employment.urls'))
 ]
