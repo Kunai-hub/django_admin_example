@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список товаров</title>
+</head>
+<body>
+    <h2>
+        Список товаров
+    </h2>
+    {% if items_list %}
+    	<table border="1">
+            <tbody>
+                <tr>
+                    <td>
+                        Артикул
+                    </td>
+                    <td>
+                        Цена
+                    </td>
+                </tr>
+                {% for item in items_list %}
+                	<tr>
+                        <td>
+                            {{ item.code }}
+                        </td>
+                        <td>
+                            {{ item.price }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>
+            Товаров нет.
+        </p>
+    {% endif %} 
+</body>
+</html>
