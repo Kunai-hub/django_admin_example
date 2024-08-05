@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "app_library.apps.AppLibraryConfig",
     "app_users.apps.AppUsersConfig",
-    "app_employment.apps.AppEmploymentConfig"
+    "app_employment.apps.AppEmploymentConfig",
+    "app_media.apps.AppMediaConfig"
 ]
 
 MIDDLEWARE = [
