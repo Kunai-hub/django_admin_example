@@ -19,11 +19,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from django_admin_example.views import MainPageView
-
+from django_admin_example.views import MainPageView, welcome
 
 urlpatterns = [
     path('', MainPageView.as_view(), name='main_page'),
+    path('welcome/', welcome, name='welcome'),
     path('admin/', admin.site.urls),
     path('users/', include('app_users.urls')),
     path('employment/', include('app_employment.urls')),
