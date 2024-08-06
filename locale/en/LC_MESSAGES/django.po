@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-06 19:08+0300\n"
+"POT-Creation-Date: 2024-08-06 19:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: templates/translation.html:7
 msgid "Наша переведенная страница."
 msgstr "Our translation page title."
@@ -24,3 +25,9 @@ msgstr "Our translation page title."
 #: templates/translation.html:12
 msgid "Переведенный текст."
 msgstr "Translated text."
+
+#: templates/translation.html:25
+#, fuzzy
+#| msgid "Наша переведенная страница."
+msgid "Добро пожаловать на нашу страницу."
+msgstr "Welcome to our page."
