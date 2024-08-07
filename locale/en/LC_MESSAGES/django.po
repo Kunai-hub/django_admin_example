@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-07 12:57+0300\n"
+"POT-Creation-Date: 2024-08-07 13:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: app_pages/views.py:13
+#: app_goods/apps.py:8 app_goods/models.py:10
+msgid "товары"
+msgstr "goods"
+
+#: app_goods/models.py:6
+msgid "Артикул"
+msgstr "Code"
+
+#: app_goods/models.py:7
+msgid "Цена"
+msgstr "Price"
+
+#: app_goods/models.py:11
+#, fuzzy
+#| msgid "товары"
+msgid "товар"
+msgstr "good"
+
+#: app_pages/views.py:14
 #, python-format
 msgid "Привет! Сегодня %(date)s %(time)s"
 msgstr "Hello there! Today is %(date)s %(time)s"
