@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     "app_employment.apps.AppEmploymentConfig",
     "app_media.apps.AppMediaConfig",
     "app_goods.apps.AppGoodsConfig",
-    "app_pages.apps.AppPagesConfig"
+    "app_pages.apps.AppPagesConfig",
+    "app_shops.apps.AppShopsConfig"
 ]
 
 MIDDLEWARE = [
