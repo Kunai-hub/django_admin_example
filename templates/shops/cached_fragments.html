@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load cache %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список магазинов</title>
+</head>
+<body>
+{% cache 500 body %}
+    {% block shop_list %}
+        {% for shop in shops %}
+            <li>
+                <p>
+                    {{ shop.name }}
+                </p>
+            </li>
+        {% endfor %}
+    {% endblock %}
+{% endcache %}
+</body>
+</html>
