@@ -3,6 +3,7 @@ from datetime import datetime
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.utils.formats import date_format
+from django.views.decorators.cache import cache_page
 
 
 def translation(request, *args, **kwargs):
@@ -23,6 +24,7 @@ def greetings_page(request, *args, **kwargs):
                   })
 
 
+# @cache_page(30)
 def welcome(request, *args, **kwargs):
     return render(request, 'welcome.html')
 
