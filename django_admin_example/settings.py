@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "app_pages.apps.AppPagesConfig",
     "app_shops.apps.AppShopsConfig",
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
