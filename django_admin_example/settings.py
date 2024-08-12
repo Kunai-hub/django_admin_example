@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     "app_media.apps.AppMediaConfig",
     "app_goods.apps.AppGoodsConfig",
     "app_pages.apps.AppPagesConfig",
-    "app_shops.apps.AppShopsConfig"
+    "app_shops.apps.AppShopsConfig",
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
