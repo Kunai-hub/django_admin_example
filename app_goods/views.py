@@ -3,6 +3,9 @@ from decimal import Decimal
 
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 from app_goods.entities import Items
 from app_goods.models import Item
@@ -55,3 +58,20 @@ def items_list_api(request):
         ]
 
         return JsonResponse(ItemSerializer(items_for_sale, many=True).data, safe=False)
+
+
+class ItemList(APIView):
+
+    def get(self, request):
+        items = Item.objects.all()
+        serializer = ItemSerializer(items, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = ItemSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
