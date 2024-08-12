@@ -21,7 +21,9 @@ from django.urls import path, include
 
 from django_admin_example.views import MainPageView, welcome
 
+
 urlpatterns = [
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('', MainPageView.as_view(), name='main_page'),
     path('welcome/', welcome, name='welcome'),
     path('admin/', admin.site.urls),
