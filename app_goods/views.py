@@ -62,8 +62,16 @@ def items_list_api(request):
 
 
 class ItemList(ListModelMixin, CreateModelMixin, GenericAPIView):
-    queryset = Item.objects.all()
     serializer_class = ItemSerializer
+
+    def get_queryset(self):
+        queryset = Item.objects.all()
+        item_name = self.request.query_params.get('name')
+
+        if item_name:
+            queryset = queryset.filter(name=item_name)
+
+        return queryset
 
     def get(self, request):
         return self.list(request)
