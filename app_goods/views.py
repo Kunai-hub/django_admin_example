@@ -4,7 +4,8 @@ from decimal import Decimal
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from rest_framework import status
-from rest_framework.views import APIView
+from rest_framework.mixins import ListModelMixin, CreateModelMixin
+from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 
 from app_goods.entities import Items
@@ -60,18 +61,12 @@ def items_list_api(request):
         return JsonResponse(ItemSerializer(items_for_sale, many=True).data, safe=False)
 
 
-class ItemList(APIView):
+class ItemList(ListModelMixin, CreateModelMixin, GenericAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
 
     def get(self, request):
-        items = Item.objects.all()
-        serializer = ItemSerializer(items, many=True)
-        return Response(serializer.data)
+        return self.list(request)
 
     def post(self, request, format=None):
-        serializer = ItemSerializer(data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return self.create(request)
