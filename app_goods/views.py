@@ -1,11 +1,13 @@
 from _csv import reader
 from decimal import Decimal
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
+from app_goods.entities import Items
 from app_goods.models import Item
 from app_goods.forms import ItemForm
+from app_goods.serializers import ItemSerializer
 
 
 def items_list(request):
@@ -34,3 +36,22 @@ def update_price(request):
     return render(request,
                   'goods/upload_price_items.html',
                   {'form': upload_file_form})
+
+
+def items_list_api(request):
+
+    if request.method == 'GET':
+        items_for_sale = [
+            Items(
+                name='Кофемашина',
+                description='Отличный кофе',
+                weight=1000
+            ),
+            Items(
+                name='AirPods',
+                description='Отличный звук',
+                weight=1500
+            )
+        ]
+
+        return JsonResponse(ItemSerializer(items_for_sale, many=True).data, safe=False)
